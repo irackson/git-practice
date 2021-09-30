@@ -1,2 +1,1 @@
-console.log('hi');
-©
+console.log('i removed the @ sign');
