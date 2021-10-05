@@ -1,1 +1,1 @@
-# repo for git practice
+# repo for gi practict
