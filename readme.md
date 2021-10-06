@@ -1,1 +1,3 @@
-this commit is the beginning point of master
+commit on master before branch
+commit on master before branch
+commit on master before branch
