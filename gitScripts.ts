@@ -14,4 +14,4 @@ const child = exec(
 		}
 	},
 );
-console.log("hi")
+console.log('yo');
