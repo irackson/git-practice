@@ -1,17 +1,24 @@
-const util = require('util');
-const exec = require('child_process').exec;
+import simpleGit, { SimpleGit, SimpleGitOptions } from 'simple-git';
 
-const command = `git add . && git commit -m "update" && git push`;
+const options: Partial<SimpleGitOptions> = {
+	baseDir: process.cwd(),
+	binary: 'git',
+	maxConcurrentProcesses: 6,
+};
+const git: SimpleGit = simpleGit(options);
 
-const child = exec(
-	command,
-	function (error: string, stdout: string, stderr: string) {
-		console.log('stdout: ' + stdout);
-		console.log('stderr: ' + stderr);
+export const gitAutomation = async () => {
+	const searchResult = await (await git.grep('sync')).results;
+	return searchResult;
+};
 
-		if (error !== null) {
-			console.log('exec error: ' + error);
-		}
-	},
-);
-console.log('sup');
+const makeCommit = async (files: string[]) => {
+	await git
+		.add(files)
+		.commit(
+			['autoSync changes:'].concat(files).join('\n'),
+			files,
+			() => {},
+		);
+};
+makeCommit(['gitScripts.ts', 'playground.ts']);
