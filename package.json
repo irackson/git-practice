@@ -26,6 +26,7 @@
         "request": "^2.88.2",
         "simple-git": "^2.48.0",
         "ts-node": "^10.2.1",
-        "typescript": "beta"
+        "typescript": "beta",
+        "openai": "^4.4.0"
     }
 }
